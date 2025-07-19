@@ -1,5 +1,5 @@
 import { GameState } from "../response_types/updated_game_response";
-import { Error } from "@/types/error";
+import { Error } from "@server/types/error";
 
 export interface ServerToClientEvents {
   "game:update": (gameState: GameState | undefined) => void;

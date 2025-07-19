@@ -1,6 +1,6 @@
 import { Player } from "@/model/player";
-import { Card } from "@/types/constant";
-import { PlayerId } from "@/types/enums";
+import { Card } from "@server/types/constant";
+import { PlayerId } from "@server/types/enums";
 
 export interface ClientToServerEvents{
     "game:get": (gameID: number) => void;
