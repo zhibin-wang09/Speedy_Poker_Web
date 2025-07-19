@@ -10,7 +10,6 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import { Field } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
 import { FaInfoCircle } from "react-icons/fa";
@@ -46,12 +45,12 @@ export default function Home() {
                     <Box>
                       <Strong>Taratari</Strong> is card game where we compete to
                       finish our cards on hand. But you <Strong>WILL</Strong> be
-                      punished if you spam the cards(you're using the wrong
+                      punished if you spam the cards(you&apos;re using the wrong
                       card)
                     </Box>
                     <Box> </Box>
                     <Box>
-                      You can play cards that's one position away from the
+                      You can play cards that&apos;s one position away from the
                       middle card(you can play card 2 or 4 if the target card is
                       3)
                     </Box>

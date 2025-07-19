@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import { motion, Variants } from "framer-motion";
+import { useRef } from "react";
+import { motion } from "framer-motion";
 import { Box } from "@chakra-ui/react";
 import Card from "@/uiComponents/card";
 import { Pile, Card as TCard } from "@/types/types";

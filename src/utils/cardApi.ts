@@ -46,7 +46,7 @@ export function createFaceValues(): FaceValue[] {
 }
 
 export function createDeck(): Deck {
-  let deck: Deck = createSuits().flatMap((s) =>
+  const deck: Deck = createSuits().flatMap((s) =>
     createFaceValues().flatMap((f) => createCard(s, f))
   );
   shuffle(deck);
@@ -63,7 +63,7 @@ export function shuffle(deck: Deck): void {
   // While there remain elements to shuffle...
   while (currentIndex != 0) {
     // Pick a remaining element...
-    let randomIndex = Math.floor(Math.random() * currentIndex);
+    const randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex--;
 
     // And swap it with the current element.

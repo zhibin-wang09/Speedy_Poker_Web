@@ -1,4 +1,4 @@
-import { Circle, Float, HStack, Text } from "@chakra-ui/react";
+import { Circle, Float, HStack } from "@chakra-ui/react";
 import { Pile as cPile } from "@/types/types";
 import Card from "./card";
 
@@ -15,7 +15,7 @@ export default function Pile({
 }: PileProp) {
   return (
     <>
-      <HStack position="relative" margin={{base: "3%"}} >
+      <HStack position="relative" margin={{ base: "3%" }}>
         {Cards === undefined ? (
           ""
         ) : (

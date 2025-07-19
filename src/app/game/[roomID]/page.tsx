@@ -31,7 +31,7 @@ export default function Page() {
 
     socket.on("game:update", (response) => {
       const game: Game = response.game;
-      for (let p of game.players) {
+      for (const p of game.players) {
         if (p.socketId == socket.id) {
           setLocalPlayer(p);
         } else {
@@ -87,7 +87,7 @@ export default function Page() {
       socket.off("game:disconnect");
       socket.off("game:error");
     };
-  }, [param.roomID]);
+  }, [router, param.roomID]);
 
   function playCard(card: Card, player: Player) {
     socket.emit("game:move", {
