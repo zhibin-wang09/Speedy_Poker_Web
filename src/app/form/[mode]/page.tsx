@@ -60,7 +60,7 @@ export default function Form() {
         socket.emit("user:join", data.roomId, data.playerName);
         break;
       case Mode.JoinAny:
-        socket.emit("user:joinAny", data.playerName);
+        socket.emit("user:join_any", data.playerName);
         break;
     }
   };

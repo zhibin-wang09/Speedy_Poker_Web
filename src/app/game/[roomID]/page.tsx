@@ -22,21 +22,20 @@ export default function Page() {
   const [opponentPlayer, setOpponentPlayer] = useState<Player>(
     new Player("", "", [], [], PlayerId.Default)
   );
-  const [roomID, setRoomID] = useState<string | undefined>();
   const param = useParams<{ roomID: string }>();
   const [haveWinner, setHaveWinner] = useState<boolean>(false);
   const router = useRouter();
 
   useEffect(() => {
-    socket.emit("game:get", parseInt(roomID!));
+    socket.emit("game:get", parseInt(param.roomID));
 
     socket.on("game:update", (response) => {
-      const game: Game = response;
-      for(let p of game.players){
-        if(p.socketId == socket.id){
-            setLocalPlayer(p);
-        }else{
-            setOpponentPlayer(p);
+      const game: Game = response.game;
+      for (let p of game.players) {
+        if (p.socketId == socket.id) {
+          setLocalPlayer(p);
+        } else {
+          setOpponentPlayer(p);
         }
       }
       if (game) {
@@ -65,26 +64,37 @@ export default function Page() {
     socket.on("game:disconnect", (response: string) => {
       toaster.create({
         description: response,
-        duration: 5000,
+        duration: 2000,
       });
       setTimeout(() => {
         router.push("/");
-      }, 5000);
+      }, 1000);
     });
 
+    socket.on("game:error", (errorMessage: string) => {
+      toaster.create({
+        description: errorMessage,
+        duration: 2000,
+      });
+
+      setTimeout(() => {
+        router.push("/");
+      }, 1000);
+    });
     return () => {
       socket.off("game:update");
       socket.off("game:result");
       socket.off("game:disconnect");
+      socket.off("game:error");
     };
-  }, [roomID]);
-
-  useEffect(() => {
-    setRoomID(param.roomID);
-  }, [param]);
+  }, [param.roomID]);
 
   function playCard(card: Card, player: Player) {
-    socket.emit("game:move", card, parseInt(roomID!), player);
+    socket.emit("game:move", {
+      card: card,
+      gameId: parseInt(param.roomID),
+      playerId: player.playerId,
+    });
   }
 
   return (
