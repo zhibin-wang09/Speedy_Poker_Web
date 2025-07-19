@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "tsx watch --include ./src --env-file=.env ./app.ts",
     "build": "next build",
-    "start": "next start",
+    "start": "tsx ./app.ts",
     "lint": "next lint"
   },
   "dependencies": {
