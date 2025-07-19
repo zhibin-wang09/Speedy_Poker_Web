@@ -6,18 +6,16 @@ interface PileProp {
   Cards: cPile;
   isFlipped: boolean;
   showNumberOfCardsInPile: boolean;
-  disposition: string;
 }
 
 export default function Pile({
   Cards,
   isFlipped,
   showNumberOfCardsInPile,
-  disposition
 }: PileProp) {
   return (
     <>
-      <HStack position="relative" margin={{base: "3%"}} right={disposition}>
+      <HStack position="relative" margin={{base: "3%"}} >
         {Cards === undefined ? (
           ""
         ) : (

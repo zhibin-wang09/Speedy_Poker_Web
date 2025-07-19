@@ -104,7 +104,7 @@ export default function Page() {
       justifyContent="space-between"
       flexDirection="column"
       backgroundColor="black"
-      height="100svh"
+      minH="100vh"
     >
       <Box display="flex" alignItems="center" justifyContent="space-between">
         <Hand
@@ -112,13 +112,11 @@ export default function Page() {
           playCard={playCard}
           player={localPlayer}
           isFlipped={true}
-          disposition={"0%"}
         ></Hand>
         <Pile
           Cards={localPlayer.drawPile}
           isFlipped={true}
           showNumberOfCardsInPile={true}
-          disposition={"-70%"}
         />
       </Box>
       <Box>
@@ -129,25 +127,21 @@ export default function Page() {
           Cards={centerDrawPile1}
           isFlipped={true}
           showNumberOfCardsInPile={false}
-          disposition={"0%"}
         />
         <Pile
           Cards={centerPile1}
           isFlipped={false}
           showNumberOfCardsInPile={false}
-          disposition={"0%"}
         />
         <Pile
           Cards={centerPile2}
           isFlipped={false}
           showNumberOfCardsInPile={false}
-          disposition={"0%"}
         />
         <Pile
           Cards={centerDrawPile2}
           isFlipped={true}
           showNumberOfCardsInPile={false}
-          disposition={"0%"}
         />
       </Box>
       <Box>
@@ -159,13 +153,11 @@ export default function Page() {
           playCard={playCard}
           player={opponentPlayer}
           isFlipped={false}
-          disposition={"0%"}
         ></Hand>
         <Pile
           Cards={opponentPlayer.drawPile}
           isFlipped={true}
           showNumberOfCardsInPile={true}
-          disposition={"-70%"}
         />
       </Box>
       <Toaster />
