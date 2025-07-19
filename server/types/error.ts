@@ -1,0 +1,1 @@
+export type Error = "Game does not exist!" | "Game already reached two players!" | "No active games!" | "Game does not exist, create a game room instead";
