@@ -104,7 +104,7 @@ export default function Page() {
       justifyContent="space-between"
       flexDirection="column"
       backgroundColor="black"
-      minH="100vh"
+      minH="100svh"
     >
       <Box display="flex" alignItems="center" justifyContent="space-between">
         <Hand
