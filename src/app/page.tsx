@@ -28,7 +28,7 @@ export default function Home() {
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.8, delay: 0.5, ease: [0, 0.71, 0.2, 1.01] }}
     >
-      <Center minH="100vh">
+      <Center minH="100svh">
         <VStack align="stretch">
           <HStack>
             <Text fontSize="4xl" as="b">

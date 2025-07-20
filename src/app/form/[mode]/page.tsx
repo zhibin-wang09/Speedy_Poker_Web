@@ -78,7 +78,7 @@ export default function Form() {
       transition={{ duration: 0.8, delay: 0.5, ease: [0, 0.71, 0.2, 1.01] }}
     >
       <form onSubmit={handleSubmit(joinGame)}>
-        <Center minH="100vh">
+        <Center minH="100svh">
           <VStack align="stretch">
             <Field.Root invalid={!!errors.playerName} required>
               <Field.Label>

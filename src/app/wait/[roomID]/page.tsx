@@ -29,7 +29,7 @@ export default function WaitingPage() {
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.8, delay: 0.5, ease: [0, 0.71, 0.2, 1.01] }}
     >
-      <Center height="100vh">
+      <Center height="100svh">
         <Box>
           <Stack direction="column" justifyContent="center">
             <Text as="b">Waiting For Another Player</Text>
