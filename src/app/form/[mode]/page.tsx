@@ -1,16 +1,17 @@
 "use client";
 import { Mode } from "@/constant/type";
 import { socket } from "@/socketClient";
-import { Button, Center, Field, Input, VStack } from "@chakra-ui/react";
+import { Button, Center, Field, Input, Switch, VStack } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useParams, useRouter } from "next/navigation";
-import { useEffect } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { useEffect, useState } from "react";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { Toaster, toaster } from "@/components/ui/toaster";
 
 interface FormData {
   playerName: string;
   roomId: number;
+  isPrivateRoom: boolean;
 }
 
 export default function Form() {
@@ -48,13 +49,18 @@ export default function Form() {
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors, isSubmitting },
-  } = useForm<FormData>();
+  } = useForm<FormData>({
+    defaultValues: {
+      isPrivateRoom: false,
+    }
+  });
 
   const joinGame: SubmitHandler<FormData> = (data: FormData) => {
     switch (params.mode) {
       case Mode.Create:
-        socket.emit("user:create", data.playerName);
+        socket.emit("user:create", data.playerName, data.isPrivateRoom);
         break;
       case Mode.Join:
         socket.emit("user:join", data.roomId, data.playerName);
@@ -87,6 +93,27 @@ export default function Form() {
                 placeholder="Ex. Raisa"
               ></Input>
             </Field.Root>
+            {params.mode == Mode.Create && (
+              <Controller
+                name="isPrivateRoom"
+                control={control}
+                render={({ field }) => {
+                  return (
+                    <Field.Root>
+                      <Switch.Root
+                        checked={field.value}
+                        name={field.name}
+                        onCheckedChange={(e) => field.onChange(e.checked)}
+                      >
+                        <Switch.HiddenInput />
+                        <Switch.Control />
+                        <Switch.Label>{field.value ? 'Private Room' : 'Public Room'}</Switch.Label>
+                      </Switch.Root> 
+                    </Field.Root>
+                  );
+                }}
+              ></Controller>
+            )}
             {params.mode == Mode.Join && (
               <Field.Root invalid={!!errors.roomId} required>
                 <Field.Label>

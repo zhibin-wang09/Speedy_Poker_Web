@@ -21,6 +21,7 @@ export class Game {
   centerDrawPile2: Pile = [];
   discardedPile: Pile = [];
   numberOfPlayers: number = 0;
+  privateRoom: boolean = false;
 
   constructor(gameID: number) {
     this.gameID = gameID;

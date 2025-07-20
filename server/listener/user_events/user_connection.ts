@@ -53,7 +53,7 @@ function userJoinAny(
   return (playerName: string) => {
     let game;
     for (let [_, g] of games) {
-      if (g.numberOfPlayers < 2) {
+      if (g.numberOfPlayers < 2 && !g.privateRoom) {
         game = g;
       }
     }
@@ -107,9 +107,9 @@ function userCreate(
     DefaultEventsMap,
     any
   >
-): (playerName: string) => void {
-  return (playerName: string) => {
-
+): (playerName: string, isPrivateRoom: boolean) => void {
+  return (playerName: string, isPrivateRoom: boolean) => {
+    console.log(playerName, isPrivateRoom)
     // generate a random game room ID and send back to the user
     // and player can wait for another user to join
     const roomIDString: string = String(
@@ -120,6 +120,7 @@ function userCreate(
 
     if (!game) {
       game = new Game(gameID);
+      game.privateRoom = isPrivateRoom; // determines if this game can be joined by anyone or only people with code
       games.set(gameID, game); // Save the game immediately after initialization
     }
 
