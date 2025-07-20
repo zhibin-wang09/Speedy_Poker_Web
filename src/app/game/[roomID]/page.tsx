@@ -108,19 +108,19 @@ export default function Page() {
     >
       <Box display="flex" alignItems="center" justifyContent="space-between">
         <Hand
-          cards={localPlayer.hand}
+          cards={opponentPlayer.hand}
           playCard={playCard}
-          player={localPlayer}
+          player={opponentPlayer}
           isFlipped={true}
         ></Hand>
         <Pile
-          Cards={localPlayer.drawPile}
+          Cards={opponentPlayer.drawPile}
           isFlipped={true}
           showNumberOfCardsInPile={true}
         />
       </Box>
       <Box>
-        <Text>Score: {localPlayer.point}</Text>
+        <Text>Score: {opponentPlayer.point}</Text>
       </Box>
       <Box display="flex" alignItems="center" justifyContent="space-between">
         <Pile
@@ -145,17 +145,17 @@ export default function Page() {
         />
       </Box>
       <Box>
-        <Text>Score: {opponentPlayer.point}</Text>
+        <Text>Score: {localPlayer.point}</Text>
       </Box>
       <Box display="flex" alignItems="center">
         <Hand
-          cards={opponentPlayer.hand}
+          cards={localPlayer.hand}
           playCard={playCard}
-          player={opponentPlayer}
+          player={localPlayer}
           isFlipped={false}
         ></Hand>
         <Pile
-          Cards={opponentPlayer.drawPile}
+          Cards={localPlayer.drawPile}
           isFlipped={true}
           showNumberOfCardsInPile={true}
         />
