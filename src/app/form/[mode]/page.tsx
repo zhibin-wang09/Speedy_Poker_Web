@@ -107,7 +107,7 @@ export default function Form() {
                       >
                         <Switch.HiddenInput />
                         <Switch.Control />
-                        <Switch.Label>{field.value ? 'Private Room' : 'Public Room'}</Switch.Label>
+                        <Switch.Label>{'Currently is ' + field.value ? 'Private Room' : 'Public Room'}</Switch.Label>
                       </Switch.Root> 
                     </Field.Root>
                   );
