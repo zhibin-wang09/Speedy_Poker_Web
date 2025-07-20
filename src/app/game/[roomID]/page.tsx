@@ -90,6 +90,8 @@ export default function Page() {
   }, [router, param.roomID]);
 
   function playCard(card: Card, player: Player) {
+    const audio = new Audio('/audio/play_card.mp3');
+    audio.play();
     socket.emit("game:move", {
       card: card,
       gameId: parseInt(param.roomID),
@@ -161,6 +163,9 @@ export default function Page() {
         />
       </Box>
       <Toaster />
+      {/* <audio autoPlay loop>
+        <source src="/audio/background.mp3" type="audio/mpeg"></source>
+      </audio> */}
       {haveWinner ? <Confetti /> : <></>}
     </Box>
   );
