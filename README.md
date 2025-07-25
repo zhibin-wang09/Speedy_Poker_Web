@@ -1,5 +1,6 @@
 ## Idea
 Tatari is a fast-paced card game that challenges players to combine speed and precision to outplay their opponents.
+Play: [Game](https://tatari-vh1o.onrender.com)
 
 ## Demo
 
